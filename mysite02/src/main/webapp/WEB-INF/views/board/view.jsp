@@ -32,8 +32,15 @@
 					</tr>
 				</table>
 				<div class="bottom">
-					<a href="">글목록</a>
-					<a href="">글수정</a>
+					<c:choose>
+						<c:when test="${empty authUser }">
+							<a href="${pageContext.request.contextPath }/board?a=list">글목록</a>
+						</c:when>
+						<c:otherwise>
+							<a href="${pageContext.request.contextPath }/board?a=list">글목록</a>
+							<a href="">글수정</a>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>

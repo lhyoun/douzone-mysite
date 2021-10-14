@@ -82,7 +82,14 @@
 				<!-- pager 추가 -->
 				
 				<div class="bottom">
-					<a href="${pageContext.request.contextPath }/board?a=writeform" id="new-book">글쓰기</a>
+					<c:choose>
+						<c:when test="${empty authUser }">
+							<a href="${pageContext.request.contextPath }/user?a=loginform" id="new-book">글쓰기</a>
+						</c:when>
+						<c:otherwise>
+							<a href="${pageContext.request.contextPath }/board?a=writeform" id="new-book">글쓰기</a>
+						</c:otherwise>
+					</c:choose>
 				</div>				
 			</div>
 		</div>
