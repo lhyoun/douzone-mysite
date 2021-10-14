@@ -9,7 +9,8 @@ public class Page {
 
 	private int pageNum;
 	private int amount = 10;
-	
+	private int realEnd;
+
 	// @Autowired
 	public Page(int pageNum, int total) {
 		this.pageNum = pageNum;
@@ -33,12 +34,12 @@ public class Page {
 		// System.out.println("**DTO** startpage: "+this.startPage);
 
 		// 마지막 페이지 번호
-		int realEnd = (int) (Math.ceil((total * 1.0) / this.amount));
+		this.realEnd = (int) (Math.ceil((total * 1.0) / this.amount));
 		// 올림<(133/10)=[13.3]>=[14]
 		// 마지막 페이지가 14페이지
 
-		if (realEnd <= this.endPage)
-			//endPage = realEnd;
+		// if (realEnd <= this.endPage)
+		// endPage = realEnd;
 
 		this.prev = this.startPage > 1;
 		// 현재 페이지가 5페이지면 start 페이지가 1이고 end가 10이다
@@ -47,11 +48,11 @@ public class Page {
 		// end페이지가 realeEnd페이지보다 작아야 다음으로 넘길 페이지가 있으니 True를 반환
 		// 그게 아니면 다음으로 넘길 페이지가 없으니까 False
 	}
-	
+
 	public int getNum() {
 		// 1 page => 0
 		// 2 page => 10
-		return (this.pageNum-1)*this.amount;
+		return (this.pageNum - 1) * this.amount;
 	}
 
 	public int getStartPage() {
@@ -110,10 +111,18 @@ public class Page {
 		this.amount = amount;
 	}
 
+	public int getRealEnd() {
+		return realEnd;
+	}
+
+	public void setRealEnd(int realEnd) {
+		this.realEnd = realEnd;
+	}
+
 	@Override
 	public String toString() {
 		return "Page [startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next
-				+ ", total=" + total + ", pageNum=" + pageNum + ", amount=" + amount + "]";
+				+ ", total=" + total + ", pageNum=" + pageNum + ", amount=" + amount + ", realEnd=" + realEnd + "]";
 	}
 
 }

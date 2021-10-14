@@ -40,7 +40,7 @@
 									<td><a href="" class="del">삭제</a></td>
 								</tr>
 							</c:when>
-							<c:when test="${true }">
+							<c:otherwise>
 								<tr>
 									<td>${count-status.index }</td>
 									<td style="text-align:left; padding-left:${20*vo.depth }px"><img src='${pageContext.servletContext.contextPath }/assets/images/reply.png' /><a href="${pageContext.request.contextPath }/board?a=view&no=${vo.no}">${vo.title }</a></td>
@@ -49,7 +49,7 @@
 									<td>${vo.regDate }</td>
 									<td><a href="" class="del">삭제</a></td>
 								</tr>
-							</c:when>
+							</c:otherwise>
 						</c:choose>
 					</c:forEach>
 					
@@ -60,7 +60,21 @@
 					<ul>
 						<li><a href="">◀</a></li>
 						<c:forEach var="num" begin="${page.startPage }" end="${page.endPage }" >
-							<li class='${page.pageNum == num ? "selected":""}'><a href="${pageContext.request.contextPath }/board?a=list&no=${num }">${num }</a></li>
+							<c:choose>
+								<c:when test="${page.pageNum == num}">
+									<li class="selected"> ${num } </li>
+								</c:when>
+								<c:otherwise>
+									<c:choose>
+										<c:when test="${page.realEnd >= num}">
+											<li><a href="${pageContext.request.contextPath }/board?a=list&no=${num }">${num }</a></li>
+										</c:when>
+										<c:otherwise>
+												<li>${num }</li>
+										</c:otherwise>
+									</c:choose>
+								</c:otherwise>
+							</c:choose>
 						</c:forEach>
 						<li><a href="">▶</a></li>
 					</ul>
