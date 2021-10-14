@@ -80,6 +80,14 @@ input#kwd	{
 	outline: none;	
 }
 
+.board-form .tbl-ex textarea#reply {
+	width: 470px;
+	height: 50px;
+	padding: 10px;
+	resize: none;
+	outline: none;	
+}
+
 .board-form select {
 	padding:5px;
 }

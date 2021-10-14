@@ -42,6 +42,28 @@
 						</c:otherwise>
 					</c:choose>
 				</div>
+				
+				<form class="board-form" method="post" action="${pageContext.request.contextPath }/board?a=write">
+					<input type = "hidden" name = "a" value="writeReply">
+					<table class="tbl-ex">
+						<tr>
+							<th colspan="2">댓글쓰기</th>
+						</tr>
+						<tr>
+							<td class="label">제목</td>
+							<td><input type="text" name="title" value=""></td>
+						</tr>
+						<tr>
+							<td class="label">내용</td>
+							<td>
+								<textarea id="reply" name="content"></textarea>
+							</td>
+						</tr>
+					</table>
+					<div class="bottom">
+						<input type="submit" value="등록">
+					</div>
+				</form>				
 			</div>
 		</div>
 		<c:import url="/WEB-INF/views/includes/navigation.jsp" />
