@@ -17,7 +17,7 @@ public class BoardViewAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int no = Integer.parseInt(request.getParameter("no"));
-
+		
 		//System.out.println("board view action"+no);
 		
 		BoardVo vo = new BoardDao().selectById(no);

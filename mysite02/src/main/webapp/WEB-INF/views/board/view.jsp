@@ -33,12 +33,12 @@
 				</table>
 				<div class="bottom">
 					<c:choose>
-						<c:when test="${empty authUser }">
+						<c:when test="${ authUser.no == vo.userNo }">
 							<a href="${pageContext.request.contextPath }/board?a=list">글목록</a>
+							<a href="">글수정</a>
 						</c:when>
 						<c:otherwise>
 							<a href="${pageContext.request.contextPath }/board?a=list">글목록</a>
-							<a href="">글수정</a>
 						</c:otherwise>
 					</c:choose>
 				</div>
