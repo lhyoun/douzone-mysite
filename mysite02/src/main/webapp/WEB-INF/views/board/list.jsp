@@ -15,9 +15,18 @@
 		<div id="content">
 			<div id="board">
 				<form id="search_form" action="" method="post">
+					<select style=' width: 15%;
+									padding: .2em .5em;
+									border-radius: 4px;' name='type'>
+						<option value="" >제목</option>
+						<option value="" >글쓴이</option>
+						<option value="" >---</option>
+					</select> 
 					<input type="text" id="kwd" name="kwd" value="">
 					<input type="submit" value="찾기">
 				</form>
+				
+						
 				<table class="tbl-ex">
 					<tr>
 						<th>번호</th>
