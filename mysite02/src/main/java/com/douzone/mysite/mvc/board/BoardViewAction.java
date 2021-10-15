@@ -1,7 +1,6 @@
 package com.douzone.mysite.mvc.board;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -24,7 +23,7 @@ public class BoardViewAction implements Action {
 		request.setAttribute("vo", vo);				
 
 		Cookie[] cookies = request.getCookies();	// 전체 쿠키
-		boolean isNotView = true;						// Read하는 Board 열람 여부(1시간 쿠키 유지)
+		boolean isNotView = true;					// Read하는 Board 열람 여부(1시간 쿠키 유지)
 		
 		String strCookie = "";						// 열람한 Board가 저장되어 있는 쿠키 정보를 담을 String
 		

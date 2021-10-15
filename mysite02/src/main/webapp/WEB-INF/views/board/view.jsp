@@ -44,8 +44,11 @@
 					</c:choose>
 				</div>
 				
-				<form class="board-form" method="post" action="${pageContext.request.contextPath }/board?a=write">
+				<form class="board-form" method="post" action="${pageContext.request.contextPath }/board">
 					<input type = "hidden" name = "a" value="writeReply">
+					<input type = "hidden" name = "group" value="${vo.groupNo }">
+					<input type = "hidden" name = "order" value="${vo.orderNo }">
+					<input type = "hidden" name = "no" value="${vo.no }">
 					<table class="tbl-ex">
 						<tr>
 							<th colspan="2">댓글쓰기</th>
