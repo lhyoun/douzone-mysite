@@ -154,7 +154,7 @@ public class BoardDao {
 		try {
 			conn = getConnection();
 			
-			String sql ="insert into board select null, ?, ?, 1, now(), max(group_no)+1, 0, 0, ? from board";
+			String sql ="insert into board select null, ?, ?, 0, now(), max(group_no)+1, 0, 0, ? from board";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, vo.getTitle());
@@ -273,6 +273,42 @@ public class BoardDao {
 			String sql =
 					" delete from board " + 
 					" where  no = ? ";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setLong(1, vo.getNo());
+			
+			int count = pstmt.executeUpdate();
+			result = count == 1;			
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		} finally {
+			try {
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}		
+		
+		return result;
+	}
+	
+	public boolean updateHit(BoardVo vo) {
+		boolean result = false;
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+			
+			String sql =
+					" update board " + 
+					"    set hit=hit+1" + 
+					"  where no=?";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setLong(1, vo.getNo());
