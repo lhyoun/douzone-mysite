@@ -262,6 +262,41 @@ public class BoardDao {
 		return result;
 	}
 	
+	public boolean delete(BoardVo vo) {
+		boolean result = false;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = getConnection();
+			
+			String sql =
+					" delete from board " + 
+					" where  no = ? ";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setLong(1, vo.getNo());
+			
+			int count = pstmt.executeUpdate();
+			result = count == 1;			
+		} catch (SQLException e) {
+			System.out.println("error:" + e);
+		} finally {
+			try {
+				if(pstmt != null) {
+					pstmt.close();
+				}
+				if(conn != null) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}		
+		
+		return result;
+	}
+	
 	private Connection getConnection() throws SQLException {
 		Connection conn = null;
 		try {
@@ -273,5 +308,6 @@ public class BoardDao {
 		} 
 		
 		return conn;
-	}	
+	}
+	
 }

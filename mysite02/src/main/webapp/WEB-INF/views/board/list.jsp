@@ -39,7 +39,7 @@
 									<td>${vo.regDate }</td>
 									<c:choose>
 										<c:when test="${ authUser.no == vo.userNo }">
-											<td><a href="${pageContext.request.contextPath }/board?a=delete&no=${num }">삭제</a></td>
+											<td><a href="${pageContext.request.contextPath }/board?a=delete&no=${vo.no }">삭제</a></td>
 										</c:when>
 										<c:otherwise>
 											<td></td>
@@ -56,7 +56,7 @@
 									<td>${vo.regDate }</td>
 									<c:choose>
 										<c:when test="${ authUser.no == vo.userNo }">
-											<td><a href="${pageContext.request.contextPath }/board?a=delete&no=${num }">삭제</a></td>
+											<td><a href="${pageContext.request.contextPath }/board?a=delete&no=${vo.no }">삭제</a></td>
 										</c:when>
 										<c:otherwise>
 											<td></td>
