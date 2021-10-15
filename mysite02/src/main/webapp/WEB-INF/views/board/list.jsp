@@ -25,7 +25,7 @@
 						<th>글쓴이</th>
 						<th>조회수</th>
 						<th>작성일</th>
-						<th>&nbsp;</th>
+						<th></th>
 					</tr>			
 					<c:set var='count' value='${fn:length(list) }' />
 					<c:forEach items='${list }' var='vo' varStatus='status'>
@@ -37,7 +37,14 @@
 									<td>${vo.userNo }</td>
 									<td>${vo.hit }</td>
 									<td>${vo.regDate }</td>
-									<td><a href="" class="del">삭제</a></td>
+									<c:choose>
+										<c:when test="${ authUser.no == vo.userNo }">
+											<td><a href="${pageContext.request.contextPath }/board?a=delete&no=${num }">삭제</a></td>
+										</c:when>
+										<c:otherwise>
+											<td></td>
+										</c:otherwise>
+									</c:choose>
 								</tr>
 							</c:when>
 							<c:otherwise>
@@ -47,7 +54,14 @@
 									<td>${vo.userNo }</td> 
 									<td>${vo.hit }</td>
 									<td>${vo.regDate }</td>
-									<td><a href="" class="del">삭제</a></td>
+									<c:choose>
+										<c:when test="${ authUser.no == vo.userNo }">
+											<td><a href="${pageContext.request.contextPath }/board?a=delete&no=${num }">삭제</a></td>
+										</c:when>
+										<c:otherwise>
+											<td></td>
+										</c:otherwise>
+									</c:choose>
 								</tr>
 							</c:otherwise>
 						</c:choose>

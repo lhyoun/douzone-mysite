@@ -1,7 +1,5 @@
 package com.douzone.mysite.mvc.board;
 
-import com.douzone.mysite.mvc.guestbook.AddAction;
-import com.douzone.mysite.mvc.guestbook.DeleteFormAction;
 import com.douzone.mysite.mvc.guestbook.ListAction;
 import com.douzone.web.mvc.Action;
 import com.douzone.web.mvc.ActionFactory;

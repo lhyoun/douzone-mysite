@@ -224,19 +224,6 @@ public class BoardDao {
 		return count;
 	}
 	
-	private Connection getConnection() throws SQLException {
-		Connection conn = null;
-		try {
-			Class.forName("org.mariadb.jdbc.Driver");
-			String url = "jdbc:mysql://127.0.0.1:3306/webdb?characterEncoding=utf8";
-			conn = DriverManager.getConnection(url, "webdb", "webdb");
-		} catch (ClassNotFoundException e) {
-			System.out.println("드라이버 로딩 실패:" + e);
-		} 
-		
-		return conn;
-	}	
-	
 	public boolean update(BoardVo vo) {
 		boolean result = false;
 
@@ -245,28 +232,15 @@ public class BoardDao {
 		try {
 			conn = getConnection();
 			
-			if("".equals(vo.getPassword())) {
-				String sql =
-						" update user " + 
-						"    set name=?, gender=?" + 
-						"  where no=?";
-				pstmt = conn.prepareStatement(sql);
-				
-				pstmt.setString(1, vo.getName());
-				pstmt.setString(2, vo.getGender());
-				pstmt.setLong(3, vo.getNo());
-			} else {
-				String sql =
-						" update user " + 
-						"    set name=?, gender=?, password=?" + 
-						"  where no=?";
-				pstmt = conn.prepareStatement(sql);
-				
-				pstmt.setString(1, vo.getName());
-				pstmt.setString(2, vo.getGender());
-				pstmt.setString(3, vo.getPassword());
-				pstmt.setLong(4, vo.getNo());
-			}
+			String sql =
+					" update board " + 
+					"    set title=?, contents=?" + 
+					"  where no=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, vo.getTitle());
+			pstmt.setString(2, vo.getContents());
+			pstmt.setLong(3, vo.getNo());
 			
 			int count = pstmt.executeUpdate();
 			result = count == 1;			
@@ -287,4 +261,17 @@ public class BoardDao {
 		
 		return result;
 	}
+	
+	private Connection getConnection() throws SQLException {
+		Connection conn = null;
+		try {
+			Class.forName("org.mariadb.jdbc.Driver");
+			String url = "jdbc:mysql://127.0.0.1:3306/webdb?characterEncoding=utf8";
+			conn = DriverManager.getConnection(url, "webdb", "webdb");
+		} catch (ClassNotFoundException e) {
+			System.out.println("드라이버 로딩 실패:" + e);
+		} 
+		
+		return conn;
+	}	
 }
