@@ -1,4 +1,4 @@
-package com.douzone.mysite.mvc.board;
+package com.douzone.mysite.mvc.board.formAction;
 
 import java.io.IOException;
 
@@ -11,18 +11,16 @@ import com.douzone.mysite.vo.BoardVo;
 import com.douzone.web.mvc.Action;
 import com.douzone.web.util.MvcUtil;
 
-public class DeleteAction implements Action {
+public class ModifyFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Long no = Long.valueOf(request.getParameter("no")).longValue();
-		
-		BoardVo vo = new BoardVo();
-		vo.setNo(no);
-		
-		new BoardDao().delete(vo);
-		MvcUtil.redirect(request.getContextPath() + "/board?a=list", request, response);
+		int no = Integer.parseInt(request.getParameter("no"));
 
+		BoardVo vo = new BoardDao().selectById(no);
+		request.setAttribute("vo", vo);
+
+		MvcUtil.forward("board/modify", request, response);
 	}
 
 }

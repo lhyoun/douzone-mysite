@@ -1,4 +1,4 @@
-package com.douzone.mysite.mvc.board;
+package com.douzone.mysite.mvc.board.formAction;
 
 import java.io.IOException;
 

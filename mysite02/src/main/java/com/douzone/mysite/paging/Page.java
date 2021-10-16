@@ -3,9 +3,9 @@ package com.douzone.mysite.paging;
 public class Page {
 	private int startPage;
 	private int endPage;
+	
 	private boolean prev, next;
 	private int total;
-	// private Criteria cri;
 
 	private int pageNum;
 	private int amount = 10;

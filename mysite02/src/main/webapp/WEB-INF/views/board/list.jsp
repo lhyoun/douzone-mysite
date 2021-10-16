@@ -14,13 +14,15 @@
 		<c:import url="/WEB-INF/views/includes/header.jsp"/>
 		<div id="content">
 			<div id="board">
-				<form id="search_form" action="" method="post">
-					<select style=' width: 15%;
-									padding: .2em .5em;
-									border-radius: 4px;' name='type'>
-						<option value="" >제목</option>
-						<option value="" >글쓴이</option>
-						<option value="" >---</option>
+				<form id="search_form" action="${pageContext.request.contextPath }/board?" method="post">
+					<input type = "hidden" name = "a" value="search">	
+					<select name = "tp" style=' width: 15%;
+									            padding: .2em .5em;
+									            border-radius: 4px;' name='type'>
+						<option value="t" >제목</option>
+						<option value="w" >글쓴이</option>
+						<option value="c" >내용</option>
+						<option value="twc" >---</option>
 					</select> 
 					<input type="text" id="kwd" name="kwd" value="">
 					<input type="submit" value="찾기">

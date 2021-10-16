@@ -1,4 +1,4 @@
-package com.douzone.mysite.mvc.board;
+package com.douzone.mysite.mvc.board.action;
 
 import java.io.IOException;
 
@@ -31,7 +31,7 @@ public class WriteAction implements Action {
 		vo.setContents(contents);
 		vo.setUserNo(Long.valueOf(authUser.getNo()).intValue());
 		
-		System.out.println(vo);
+		//System.out.println(vo);
 		
 		new BoardDao().insert(vo);
 		MvcUtil.redirect(request.getContextPath() + "/board?a=list", request, response);

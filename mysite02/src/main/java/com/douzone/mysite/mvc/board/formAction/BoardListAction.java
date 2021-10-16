@@ -1,4 +1,4 @@
-package com.douzone.mysite.mvc.board;
+package com.douzone.mysite.mvc.board.formAction;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,7 +24,7 @@ public class BoardListAction implements Action {
 		
 		Page page = new Page(no, count);
 		
-		System.out.println(page);
+		//System.out.println(page);
 		
 		List<BoardVo> list = new BoardDao().findAll(page);
 		request.setAttribute("list", list);

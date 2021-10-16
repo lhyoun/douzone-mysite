@@ -2,13 +2,11 @@ package com.douzone.mysite.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.douzone.mysite.mvc.board.BoardActionFactory;
-import com.douzone.mysite.mvc.guestbook.GuestbookActionFactory;
 import com.douzone.web.mvc.Action;
 
 public class BoardController extends HttpServlet {
