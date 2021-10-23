@@ -13,6 +13,25 @@ public class BoardVo {
 	private int depth;
 	private int userNo;
 	
+	private String userName;
+	private int resultNo;
+	
+	public int getResultNo() {
+		return resultNo;
+	}
+
+	public void setResultNo(int resultNo) {
+		this.resultNo = resultNo;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	public BoardVo() {
 		super();
 	}

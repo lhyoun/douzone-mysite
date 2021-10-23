@@ -25,9 +25,13 @@ public class BoardDao {
 			conn = getConnection();
 
 			String sql = "SELECT * "
-					+ "   FROM   board a "
-					+ "   ORDER  BY a.group_no desc, a.order_no asc "
-					+ "   LIMIT  ?, 10";
+					+ "   FROM (SELECT a.*, @rownum := @rownum + 1 AS result_no "
+					+ "         FROM   (SELECT a.*, b.name"
+					+ "                 FROM   board a "
+					+ "                 INNER  JOIN user b ON a.user_no = b.no "
+					+ "                 ORDER  BY a.group_no desc, a.order_no asc) a, "
+			        + "                 (SELECT @rownum :=0) r) a "
+			        + "   LIMIT  ?, 10";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, page.getNum());
@@ -46,7 +50,9 @@ public class BoardDao {
 				int orderNo = rs.getInt(7);
 				int depth = rs.getInt(8);
 				int userNo = rs.getInt(9);
-
+				String userName = rs.getString(10);
+				int resultNo = rs.getInt(11);
+				
 				BoardVo vo = new BoardVo();
 				
 				vo.setNo(no);
@@ -58,8 +64,11 @@ public class BoardDao {
 				vo.setOrderNo(orderNo);
 				vo.setDepth(depth);
 				vo.setUserNo(userNo);
+				vo.setUserName(userName);
+				vo.setResultNo(resultNo);
 				
 				list.add(vo);
+				System.out.println(userName);
 			}
 
 		} catch (SQLException e) {
@@ -366,7 +375,7 @@ public class BoardDao {
 		try {
 			conn = getConnection();
 
-			String sql = " UPDETE board "
+			String sql = " UPDATE board "
 					+ "    SET    hit = hit+1"
 					+ "    WHERE  no  = ?";
 			

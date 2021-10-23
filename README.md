@@ -10,7 +10,7 @@
 
 ### MySite
 
-1. `git clone =>` https://github.com/lhyoun/douzone-mysite
+1. `git clone =>` git clone -b master https://github.com/lhyoun/douzone-mysite
 
 2. `DB연결관련 =>` com.douzone.mysite.dao
 

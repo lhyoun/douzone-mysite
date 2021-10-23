@@ -43,9 +43,9 @@
 						<c:choose>
 							<c:when test="${vo.depth == 0 }">
 								<tr>
-									<td>${count-status.index }</td>
+									<td>${vo.resultNo }</td>
 									<td style="text-align:left; padding-left:0px"><a href="${pageContext.request.contextPath }/board?a=view&no=${vo.no}">${vo.title }</a></td>
-									<td>${vo.userNo }</td>
+									<td>${vo.userName }</td>
 									<td>${vo.hit }</td>
 									<td>${vo.regDate }</td>
 									<c:choose>
@@ -60,9 +60,9 @@
 							</c:when>
 							<c:otherwise>
 								<tr>
-									<td>${count-status.index }</td>
+									<td>${vo.resultNo }</td>
 									<td style="text-align:left; padding-left:${20*vo.depth }px"><img src='${pageContext.servletContext.contextPath }/assets/images/reply.png' /><a href="${pageContext.request.contextPath }/board?a=view&no=${vo.no}">${vo.title }</a></td>
-									<td>${vo.userNo }</td> 
+									<td>${vo.userName }</td> 
 									<td>${vo.hit }</td>
 									<td>${vo.regDate }</td>
 									<c:choose>
